@@ -40,8 +40,8 @@ export async function GET(request: Request) {
         ])
 
         return NextResponse.json({ leads, total })
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error fetching leads:', error)
-        return NextResponse.json({ error: 'Failed to fetch leads' }, { status: 500 })
+        return NextResponse.json({ error: 'Failed to fetch leads', details: error.message }, { status: 500 })
     }
 }
