@@ -18,7 +18,7 @@ export async function POST(request: Request) {
                 include: { messages: true }
             })
             if (campaign) {
-                day1Message = campaign.messages.find(m => m.dayNumber === 1)
+                day1Message = campaign.messages.find((m: any) => m.dayNumber === 1)
             }
         }
 
