@@ -35,7 +35,7 @@ export async function GET(request: Request) {
             if (!lead.campaign) continue
 
             const nextDay = lead.currentDay + 1
-            const message = lead.campaign.messages.find(m => m.dayNumber === nextDay)
+            const message = lead.campaign.messages.find((m: any) => m.dayNumber === nextDay)
 
             if (!message) continue
 
