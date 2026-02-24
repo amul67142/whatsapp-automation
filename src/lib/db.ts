@@ -5,10 +5,12 @@ const globalForPrisma = globalThis as unknown as {
     prisma: PrismaClient | undefined
 }
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:Amul1234sharma@db.zmvntgzkwijlclmrtibi.supabase.co:5432/postgres'
+function createPrismaClient() {
+    const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:Amul1234sharma@db.zmvntgzkwijlclmrtibi.supabase.co:5432/postgres'
+    const adapter = new PrismaPg({ connectionString })
+    return new PrismaClient({ adapter })
+}
 
-const adapter = new PrismaPg({ connectionString })
-
-export const db = globalForPrisma.prisma ?? new PrismaClient({ adapter })
+export const db = globalForPrisma.prisma ?? createPrismaClient()
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = db
