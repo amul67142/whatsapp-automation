@@ -1,0 +1,1 @@
+{"error":"Failed to fetch leads","details":"\nInvalid `prisma.lead.count()` invocation:\n\n\nCan't reach database server at db.zmvntgzkwijlclmrtibi.supabase.co"}
