@@ -1,10 +1,22 @@
 import axios from 'axios'
-import { Lead, CampaignMessage } from '@prisma/client'
 
 const AISENSY_API_KEY = process.env.AISENSY_API_KEY
 const AISENSY_BASE_URL = 'https://backend.aisensy.com/campaign/t1/api/v2'
 
-export async function sendWhatsAppMessage(lead: Lead, message: CampaignMessage) {
+interface LeadData {
+    phone: string
+    name: string
+    campaignId: string | null
+}
+
+interface MessageData {
+    dayNumber: number
+    messageText: string
+    imageUrl?: string | null
+    buttons?: string | null
+}
+
+export async function sendWhatsAppMessage(lead: LeadData, message: MessageData) {
     if (!AISENSY_API_KEY) {
         console.warn('AISENSY_API_KEY is not set. Simulating message send.')
         return { success: true, simulated: true, timestamp: new Date() }
