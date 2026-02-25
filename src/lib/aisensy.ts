@@ -28,7 +28,7 @@ export async function sendWhatsAppMessage(lead: LeadData, message: MessageData) 
             campaignName: process.env.AISENSY_CAMPAIGN_NAME || 'lead_nurturing_campaign',
             destination: lead.phone,
             userName: lead.name,
-            templateParams: [lead.name],
+            templateParams: [message.messageText],
         }
 
         if (message.imageUrl) {
