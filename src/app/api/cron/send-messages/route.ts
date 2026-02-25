@@ -18,8 +18,8 @@ export async function GET(request: Request) {
                 currentDay: { lt: 7 },
                 OR: [
                     { lastMessageSent: null },
-                    // Check if it's been ~24 hours since the last message
-                    { lastMessageSent: { lte: new Date(Date.now() - 23.5 * 60 * 60 * 1000) } }
+                    // Check if it's been ~1 hour since the last message (TEMP: normally 23.5 hours)
+                    { lastMessageSent: { lte: new Date(Date.now() - 1 * 60 * 60 * 1000) } }
                 ]
             },
             include: {
