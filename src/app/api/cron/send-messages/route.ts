@@ -16,11 +16,6 @@ export async function GET(request: Request) {
             where: {
                 status: 'ACTIVE',
                 currentDay: { lt: 7 },
-                OR: [
-                    { lastMessageSent: null },
-                    // Check if it's been ~1 hour since the last message (TEMP: normally 23.5 hours)
-                    { lastMessageSent: { lte: new Date(Date.now() - 1 * 60 * 60 * 1000) } }
-                ]
             },
             include: {
                 campaign: {
