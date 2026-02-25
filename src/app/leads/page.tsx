@@ -294,7 +294,7 @@ export default function LeadsPage() {
                             Import Leads CSV
                         </DialogTitle>
                         <DialogDescription>
-                            Upload a CSV file containing your leads. Required columns: "name" and "phone".
+                            Upload a CSV with columns: <strong>name</strong>, <strong>phone</strong>, and optionally <strong>email</strong> and <strong>campaign</strong>. If your CSV has a &quot;campaign&quot; column, each lead will be assigned to the matching campaign by name.
                         </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
